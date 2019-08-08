@@ -16,17 +16,3 @@ app.listen(
     3000,
     () => console.log("Server is started")
 );
-
-//get all the employees
-app.get('/employees/:id', (request, response) => {
-    mysqlConnection.query('SELECT * FROM employee WHERE empId = ?',request.params.id,
-        (error, rows, fields) => {
-        if (!error) {
-            response.send(rows);
-            console.log(rows);
-        } else {
-            response.send(error);
-            console.log(error);
-        }
-        });
-});
