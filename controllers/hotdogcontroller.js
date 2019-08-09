@@ -62,7 +62,6 @@ exports.create = (request, response) => {
         sauce: request.body.sauce,
         price: request.body.price
     }).then((result) => {
-        //console.log("Data :\n", request.body.name + " " + request.body.vegetable + " " + request.body.sauce + " " + request.body.price);
         console.log("Create succes!");
         response.send({
             id: result.hotdog_id,
@@ -88,7 +87,10 @@ exports.update = (request, response) => {
         },
         {
             where: {
-                hotdog_id: request.params.id
+                name: request.params.name,
+                vegetable : request.params.vegetable,
+                sauce : request.params.sauce,
+                price : request.params.price
             }
         }
     ).then((result) => {
@@ -103,7 +105,10 @@ exports.update = (request, response) => {
 exports.delete = (request, response) => {
     HotDog.destroy({
         where: {
-            hotdog_id: request.params.id
+            name: request.params.name,
+            vegetable : request.params.vegetable,
+            sauce : request.params.sauce,
+            price : request.params.price
         }
     }).then((result) => {
         console.log("Delete Succes!");
