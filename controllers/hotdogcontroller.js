@@ -62,8 +62,15 @@ exports.create = (request, response) => {
         sauce: request.body.sauce,
         price: request.body.price
     }).then((result) => {
-        console.log("Data :\n", request.body.name + " " + request.body.vegetable + " " + request.body.sauce + " " + request.body.price);
+        //console.log("Data :\n", request.body.name + " " + request.body.vegetable + " " + request.body.sauce + " " + request.body.price);
         console.log("Create succes!");
+        response.send({
+            id: res.hotdog_id,
+            name: res.name,
+            vegetable: res.vegetable,
+            sauce: res.sauce,
+            price: res.price
+        });
         response.sendStatus(200);
     }).catch((error) => {
         console.log(error);
