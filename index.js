@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/', (req, res, next) => res.json({ text: 'hello world!' }))
 app.get('/hotdogs', hotController.all);
 app.post('/hotdogs', hotController.create);
-app.put('/hotdogs/:id', hotController.update);
-app.delete('/hotdogs/:id', hotController.delete);
+app.put('/hotdogs/:name/:vegetable/:sauce/:price', hotController.update);
+app.delete('/hotdogs/:name/:vegetable/:sauce/:price', hotController.delete);
 
 app.listen(
     PORT,
