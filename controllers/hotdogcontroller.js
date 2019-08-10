@@ -70,32 +70,34 @@ exports.create = (request, response) => {
             sauce: result.sauce,
             price: result.price
         });
-         response.sendStatus(200);
+         //response.sendStatus(200);
     }).catch((error) => {
         console.log(error);
-        response.sendStatus(500);
+        //response.sendStatus(500);
     });
 };
 
 exports.update = (request, response) => {
     HotDog.update(
         {
-            name: request.body.name,
-            vegetable: request.body.vegetable,
-            sauce: request.body.sauce,
-            price: request.body.price
+            name: request.body.new_name,
+            vegetable: request.body.new_vegetable,
+            sauce: request.body.new_sauce,
+            price: request.body.new_price
         },
         {
             where: {
-                name: request.params.name,
-                vegetable : request.params.vegetable,
-                sauce : request.params.sauce,
-                price : request.params.price
+                name: request.body.name,
+                vegetable : request.body.vegetable,
+                sauce : request.body.sauce,
+                price : request.body.price
             }
         }
     ).then((result) => {
         console.log("Update Succes!");
-        response.sendStatus(200);
+        response.send({
+            result : "Update Succes!"
+        })
     }).catch((error) => {
         console.log(error);
         response.sendStatus(500);
@@ -103,18 +105,25 @@ exports.update = (request, response) => {
 };
 
 exports.delete = (request, response) => {
+    console.log({
+        name: request.body.name,
+        vegetable: request.body.vegetable,
+        sauce: request.body.sauce,
+        price: request.body.price
+    });
     HotDog.destroy({
         where: {
-            name: request.params.name,
-            vegetable : request.params.vegetable,
-            sauce : request.params.sauce,
-            price : request.params.price
+            name: request.body.name,
+            vegetable: request.body.vegetable,
+            sauce: request.body.sauce,
+            price: request.body.price
         }
     }).then((result) => {
         console.log("Delete Succes!");
-        response.sendStatus(200);
+        response.send({
+            result : "Delete Succes!"
+        });
     }).catch((error) => {
         console.log(error);
-        response.sendStatus(500);
     });
 };
