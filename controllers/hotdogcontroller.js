@@ -70,7 +70,7 @@ exports.create = (request, response) => {
             sauce: result.sauce,
             price: result.price
         });
-         //response.sendStatus(200);
+        //response.sendStatus(200);
     }).catch((error) => {
         console.log(error);
         //response.sendStatus(500);
@@ -88,16 +88,19 @@ exports.update = (request, response) => {
         {
             where: {
                 name: request.body.name,
-                vegetable : request.body.vegetable,
-                sauce : request.body.sauce,
-                price : request.body.price
+                vegetable: request.body.vegetable,
+                sauce: request.body.sauce,
+                price: request.body.price
             }
         }
     ).then((result) => {
-        console.log("Update Succes!");
+        console.log(`Update Succes!`);
         response.send({
-            result : "Update Succes!"
-        })
+            name: request.body.new_name,
+            vegetable: request.body.new_vegetable,
+            sauce: request.body.new_sauce,
+            price: request.body.new_price
+        });
     }).catch((error) => {
         console.log(error);
         response.sendStatus(500);
@@ -121,7 +124,7 @@ exports.delete = (request, response) => {
     }).then((result) => {
         console.log("Delete Succes!");
         response.send({
-            result : "Delete Succes!"
+            result: "Delete Succes!"
         });
     }).catch((error) => {
         console.log(error);

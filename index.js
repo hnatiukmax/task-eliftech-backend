@@ -16,6 +16,6 @@ app.post('/hotdogs/edit', hotController.update);
 app.post('/hotdogs/delete', hotController.delete);
 
 app.listen(
-    3000,
+    PORT,
     () => console.log(`Application started at :${PORT}`)
 );
