@@ -9,6 +9,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+console.log(__dirname)
+
+app.use('/.well-known', express.static(__dirname + '/public'));
+
 app.get('/', (req, res, next) => res.json({ text: 'hello world! Time => ' + Date() }))
 // app.get('/hotdogs', hotController.all);
 // app.post('/hotdogs', hotController.create);
